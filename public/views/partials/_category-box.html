@@ -1,0 +1,14 @@
+<div class="category-box" ng-controller="CategoryCtrl">
+  <p class="category-box-title">Shop by</p>
+  <div class="category-box-content">
+    <p>Category</p>
+    <ul>
+      <li ng-repeat="category in categories" ng-class="{categorySelected: category.selected}">
+        <md-button ng-click="selectCategory(category.name)">
+          <i ng-show="category.selected" class="icon ion-ios-arrow-forward"> </i>
+          {{category.name}} ({{category.count}})
+        </md-button>
+      </li>
+    </ul>
+  </div>
+</div>

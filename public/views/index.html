@@ -1,0 +1,63 @@
+<!--Arnaud Couchet-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Arnaud Couchet</title>
+        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/0.7.1/angular-material.min.css">
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <link rel="stylesheet" href="public/css/style.css">
+    </head>
+    <body data-ng-app="App">
+        <div class="container">
+
+            <o-header></o-header>
+
+            <div class="toolbar">
+                <ul>
+                    <li><a href="/#/">Hers</a></li>
+                    <li><a href="/#/">His</a></li>
+                    <li><a href="/#/">Kids</a></li>
+                    <li><a href="/#/">Trainers</a></li>
+                    <li><a href="/#/">Accessories</a></li>
+                    <li><a href="/#/">Brands</a></li>
+                    <li><a href="/#/">Sales</a></li>
+                    <li><a href="/#/">Dealers</a></li>
+                </ul>
+
+                <div class="search" ng-controller="SearchCtrl">
+                    <input id="search-input" ng-model="search" type="text" placeholder="  Search entire store here">
+                    <md-button ng-click="setSearch(search)" class="md-raised md-warn" id="search-btn">Search</md-button>
+                </div>
+            </div>
+
+            <div class="ads">
+                <p><img src="public/img/sale.png" alt="sale">10% for all students</p>
+                <p><img src="public/img/delivery.png" alt="delivery">International delivery <span>from $5</span></p>
+                <p><img src="public/img/return.png" alt="return">Free returns <span>with collect +</span></p>
+            </div>
+
+
+
+            <div class="body">
+                <div ui-view></div>
+            </div>
+            <o-footer></o-footer>
+            <bottom-images></bottom-images>
+            <br><center>Arnaud Couchet</center></br>
+
+        </div>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-aria.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-resource.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.7.1/angular-material.min.js"></script>
+
+
+        <script src="public/js/app.js"></script>
+        <script src="public/js/controllers.js"></script>
+        <script src="public/js/services.js"></script>
+        <script src="public/js/directives.js"></script>
+    </body>
+</html>

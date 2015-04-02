@@ -1,0 +1,10 @@
+[
+  {
+    "email": "test@gmail.com",
+    "password": "pass"
+  },
+  {
+    "email": "user2@sendbox.fr",
+    "password": "azerty"
+  }
+]
