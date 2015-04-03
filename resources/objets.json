@@ -1,44 +1,44 @@
 [
   {
     "name": "Ipad",
+    "category": "etudes",
     "description": "Think different.",
     "price": 250,
-    "category": "game",
     "image": "http://1.1.1.1/bmi/static.fnac-static.com/multimedia/FR/Images_Produits/FR/fnac.com/Zoom%20Produit%20technique/1/8/5/0885909667581.jpg"
   },
   {
     "name": "Sunglasses",
+    "category": "divertissement",
     "description": "Mirror polarized lenses.",
     "price": 179.00,
-    "category": "home",
     "image": "http://1.1.1.5/bmi/www.mylens.com.au/images/SunGlasses/catg2004s90f480_O2LG_49_145936.jpg"
   },
   {
     "name": "Drone Phantom Mode 2",
+    "category": "divertissement",
     "description": "Camera.",
     "price": 750,
-    "category": "toy",
     "image": "http://1.1.1.4/bmi/www.theyeshivaworld.com/wp-content/uploads/2015/02/78548680_drone_pa.jpg"
   },
   {
     "name": "Porsche boxster",
+    "category": "transport",
     "description": "Né pour la piste",
     "price": 50000,
-    "category": "car",
-    "image": "http://1.1.1.4/bmi/upload.wikimedia.org/wikipedia/commons/thumb/1/15/Porsche_Boxster_987_Facelift.JPG/280px-Porsche_Boxster_987_Facelift.JPG"
+    "image": "http://1.1.1.5/bmi/faimg1.forum-auto.com/mesimages/179074/987S.jpg"
   },
   {
     "name": "Tournevis",
+    "category": "bricolage",
     "description": "Cruciforme, aimanté.",
     "price": 10,
-    "category": "work",
     "image": "http://1.1.1.3/bmi/s1.lmcdn.fr/multimedia/354339031/1e544eef6973/produits/tournevis-electricien-isole-plat-3-5x100-mm-facom-sc-a-ve.jpg"
   },
   {
     "name": "PS4",
+    "category": "divertissement",
     "description": "Nombreuses applications.",
     "price": 550,
-    "category": "game",
     "image": "http://1.1.1.1/bmi/www.journaldugeek.com/files/2015/03/PS4.jpg"
   }
 ]

@@ -1,0 +1,106 @@
+<ariane-thread></ariane-thread>
+<div id="checkout-progress" class="category-box">
+    <p class="category-box-title">Checkout Progress</p>
+    <div class="category-box-content">
+        <ul>
+            <li>Billing Adress</li>
+            <li>Shipping Adress</li>
+            <li>Shipping Method</li>
+            <li>Payment Method</li>
+        </ul>
+    </div>
+</div>
+<div class="checkoutIn">
+    <div id="checkoutInner">
+        <div class="checkoutInner-title">
+            <div class="square-title">1</div>
+            <p>CHECKOUT METHOD</p>
+        </div>
+        <p id="checkoutInner-subtitle">Checkout as a guest or register</p>
+        <div id="checkkout-method-content">
+            <p>Register with us for further convenience</p>
+            <div id="checkoutInner-radio-form">
+                <p><input type="radio" value="guest"> Checkout As A Guest</p>
+                <p><input type="radio" value="register"> Register</p>
+            </div>
+            <p>Register and Save Time!</p>
+            <p>Register With us for further convenience</p>
+            <div id="checkoutInner-list">
+                <p><button class = "checkoutInner-Button" ng-click="showInput()"><i class="icon ion-ios-arrow-right"></i> Checkout As A Guest</button></p>
+                <p><button class = "checkoutInner-Button" ng-click="showInput()"><i class="icon ion-ios-arrow-right"></i> Register</button></p>
+            </div>
+            <form name="formRegister" ng-show="showRegisterForm" class="form-register">
+                <md-content class="padding">
+                    <input-container>
+                        <p>Nom :</p>
+                        <input ng-model="user.name" type="text" placeholder="Nom" required>
+                    </input-container>
+                    <p>Prénom :</p>
+                    <input-container>
+                        <input ng-model="user.firstname" type="text" placeholder="Prénom" required>
+                        <input-container>
+                            <input-container>
+                                <p>Téléphone :</p>
+                                <input ng-model="user.phone" type="text" placeholder="Téléphone" required>
+                                <input-container>
+                                    <input-container>
+                                        <p>Mail :</p>
+                                        <input ng-model="user.email" type="email" placeholder="Mail" required>
+                                    </input-container>
+                                    <input-container>
+                                        <p>Mot de passe :</p>
+                                        <input ng-model="user.password" type="password" placeholder="Mot de passe">
+                                        <input-container>
+                                            <input-container>
+                                                <p>Adresse de livraison :</p>
+                                                <input ng-model="user.livraison" type="text" placeholder="Adresse de livraison">
+                                                <input-container>
+                                                    <input-container>
+                                                        <p>Adresse de facturation :</p>
+                                                        <input ng-model="user.facturation" type="text" placeholder="Adresse de facturation">
+                                                        <input-container>
+                                                            </md-content>
+                                                            </form>
+                                                            <button class="" ng-click="userRegister()">Continue</button>
+                                                            </div>
+                                                            </div>
+                                                            <div id="checkout-login">
+                                                                <p id="checkout-login-title">Login</p>
+                                                                <p>Already registered? Please login below:</p>
+                                                                <form name="login-form" id="checkout-login-form">
+                                                                    <div id="checkout-login-form-email">
+                                                                        <label for="email">Email Address:</label>
+                                                                        <p><input name="email" type="email" placeholder="" ng-model="email" required></p>
+                                                                    </div>
+                                                                    <div id="checkout-login-form-password">
+                                                                        <label for="password">Password:</label>
+                                                                        <p><input name="password" type="password" ng-model="password" required></p>
+                                                                    </div>
+                                                                    <button id="login-btn" class="md-raised md-warn" ng-click="userLogin()">LOGIN</button>
+                                                                </form>
+                                                            </div>
+                                                            <div id="checkout-list">
+                                                                <ul>
+                                                                    <li>
+                                                                        <div class="square">2</div>
+                                                                        <p>BILLING INFORMATION</p>
+                                                                    </li>
+                                                                    <li>
+                                                                        <div class="square">3</div>
+                                                                        <p>SHIPPING INFORMATION</p>
+                                                                    </li>
+                                                                    <li>
+                                                                        <div class="square">4</div>
+                                                                        <p>SHIPPING METHOD</p>
+                                                                    </li>
+                                                                    <li>
+                                                                        <div class="square">5</div>
+                                                                        <p>PAYMENT INFORMATION</p>
+                                                                    </li>
+                                                                    <li>
+                                                                        <div class="square">6</div>
+                                                                        <p>ORDER REVIEW</p>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            </div>

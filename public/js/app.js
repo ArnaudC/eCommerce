@@ -1,27 +1,31 @@
 'use strict';
 
-angular.module('App', ['ngMaterial', 'ui.router', 'ngResource'])
+angular.module('Ecommerce', ['ngMaterial', 'ui.router', 'ngResource'])
 
-.config(function($stateProvider, $urlRouterProvider){
-  $urlRouterProvider.otherwise('/');
+        .config(function ($stateProvider, $urlRouterProvider) {
+            $urlRouterProvider.otherwise('/');
+            $stateProvider
+                    .state('main', {
+                        url: '/',
+                        controller: 'MainCtrl',
+                        templateUrl: 'public/views/inner/main.html',
+                    })
 
-  $stateProvider
-    .state('home', {
-      url: '/',
-      templateUrl: 'public/views/partials/home.html',
-      controller: 'HomeCtrl',
-    })
-    .state('cart', {
-      url: '/cart',
-      templateUrl: 'public/views/partials/cart.html',
-      controller: 'CartCtrl',
-    })
-    .state('checkout', {
-      url: '/checkout',
-      templateUrl: 'public/views/partials/checkout.html',
-      controller: 'CheckoutCtrl',
-    })
-    ;
 
-})
-;
+                    .state('checkout', {
+                        url: '/checkout',
+                        controller: 'PageCheckoutCtrl',
+                        templateUrl: 'public/views/inner/checkout.html',
+                    })
+
+
+                    .state('caddie', {
+                        url: '/caddie',
+                        controller: 'CaddieCtrl',
+                        templateUrl: 'public/views/inner/caddie.html',
+                    })
+
+                    ;
+
+        })
+        ;

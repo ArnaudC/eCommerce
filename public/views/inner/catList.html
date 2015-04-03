@@ -4,10 +4,10 @@
     <p>Category</p>
     <ul>
       <li ng-repeat="category in categories" ng-class="{categorySelected: category.selected}">
-        <md-button ng-click="selectCategory(category.name)">
+        <button ng-click="selectCategory(category.name)">
           <i ng-show="category.selected" class="icon ion-ios-arrow-forward"> </i>
-          {{category.name}} ({{category.count}})
-        </md-button>
+          {{category.name | lowercase}} ({{category.count}})
+        </button>
       </li>
     </ul>
   </div>

@@ -1,39 +1,32 @@
 'use strict';
-
-angular.module('App')
-
-.directive('arianeThread', function(){
-  return {
-    restrict: 'E',
-    templateUrl: 'public/views/partials/_ariane-thread.html'
-  };
-})
-
-.directive('categoryBox', function(){
-  return {
-    restrict: 'E',
-    templateUrl: 'public/views/partials/_category-box.html'
-  };
-})
-
-.directive('oFooter', function(){
-  return {
-    restrict: 'E',
-    templateUrl: 'public/views/partials/_footer.html'
-  };
-})
-
-.directive('bottomImages', function(){
-  return {
-    restrict: 'E',
-    templateUrl: 'public/views/partials/_bottom-images.html'
-  };
-})
-
-.directive('oHeader', function(){
-  return {
-    restrict: 'E',
-    templateUrl: 'public/views/partials/_header.html'
-  };
-})
-;
+angular.module('Ecommerce')
+        .directive('oFooter', function () {
+            return {
+                templateUrl: 'public/views/inner/footer.html',
+                restrict: 'E'
+            };
+        })
+        .directive('arianeThread', function () {
+            return {
+                templateUrl: 'public/views/inner/path.html',
+                restrict: 'E'
+            };
+        })
+        .directive('oHeader', function () {
+            return {
+                templateUrl: 'public/views/inner/header.html',
+                restrict: 'E'
+            };
+        })
+        .directive('categoryBox', function () {
+            return {
+                templateUrl: 'public/views/inner/catList.html',
+                restrict: 'E'
+            };
+        })
+        .directive('bottomImages', function () {
+            return {
+                templateUrl: 'public/views/inner/pictures.html',
+                restrict: 'E'
+            };
+        });

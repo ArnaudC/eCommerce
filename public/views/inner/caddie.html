@@ -1,0 +1,52 @@
+<ariane-thread></ariane-thread>
+<div class="cart-messages">
+    <p>
+        <i class="icon ion-checkmark"></i>
+        "{{lastitem.name}}" was successfully added to your shopping cart
+    </p>
+</div>
+<div class="cart-empty" ng-show="isEmpty()">Empty</div>
+<table class="itemDetail" ng-hide="isEmpty()">
+    <thead>
+        <tr>
+            <th scope="col">Product Name</th>
+            <th scope="col">Unit Price</th>
+            <th scope="col">Qty</th>
+            <th scope="col">Subtotal</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in items">
+
+            <td class="cart-name-col">
+                <div class="cart-item-img-container">
+                    <div class="cart-item-img">
+                        <img ng-src="{{item.image}}" alt="item image">
+                    </div>
+                </div>
+                <div class="cart-item-name-container">
+                    <p class="cart-item-name">{{item.name}}</p>
+                </div>
+                <div class="cart-item-edit-container">
+                    <button class="cart-item-edit">Edit</button>
+                </div>
+            </td>
+            <td class="cart-price-col">{{item.price| currency}}</td>
+            <td class="cart-quantity-col">
+                <input type="number" ng-model="item.quantity" ng-change="actualiserPrix()">
+            </td>
+            <td class="cart-subtotal-col">{{item.price * item.quantity| currency}}</td>
+            <td class="cart-delete-col">
+                <button class="cart-item-delete" ng-click="remove(item.name)">x</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="cart-total-price" ng-hide="isEmpty()">
+    <p>The total price is {{totalPrice| currency}}</p>
+</div>
+<div class="cart-controls">
+    <a href="/#/"><button class="cart-continue-btn">CONTINUE SHOPPING</button></a>
+    <button class="cart-update-btn">UPDATE SHOPPING CART</button>
+</div>

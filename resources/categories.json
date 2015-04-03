@@ -1,22 +1,18 @@
 [
   {
-    "name": "home",
+    "name": "etudes",
     "count": 1
   },
   {
-    "name": "work",
+    "name": "bricolage",
     "count": 1
   },
   {
-    "name": "game",
-    "count": 2
-  },
-  {
-    "name": "car",
+    "name": "transport",
     "count": 1
   },
   {
-    "name": "toy",
-    "count": 1
+    "name": "divertissement",
+    "count": 3
   }
 ]

@@ -1,0 +1,54 @@
+<ariane-thread></ariane-thread>
+<category-box></category-box>
+<div class="content" ng-controller="ItemListCtrl">
+
+    <div class="sortBar">
+        <div class="sortBar-top">
+            <p class="sortBar-top-title">Vulputate adipiscing</p>
+            <p class="sortBar-top-text">
+                <button ng-click="hideSort()">Hide Option <i class="icon ion-android-arrow-down"></i>
+                </button>
+            </p>
+        </div>
+        <div class="sortBar-separation"></div>
+        <div class="sortBar-bottom" ng-hide="optionsHidden">
+            <img src="public/img/iconCat.png" alt="cat">
+            <div class="sortBar-controls">
+                <div class="sortBar-show">Show <select>
+                        <option value="12">12 per page</option>
+                    </select>
+                </div>
+                <div class="sortBar-sort">
+                    Sort by <select ng-model="sortCriteria">
+                        <option ng-repeat="sort in sorts" ng-value="sort">{{sort}}</option>
+                    </select>
+
+                    <button ng-click="sortReverse = !sortReverse" class="sort-reverse">
+                        <i class="icon ion-android-arrow-up" ng-show="!sortReverse"></i>
+                        <i class="icon ion-android-arrow-down" ng-show="sortReverse"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="item-list">
+        <div class="item" ng-repeat="item in items| orderBy:sortCriteria:sortReverse">
+            <div class="item-img">
+                <img ng-src="{{item.image}}" alt="item image">
+                <button class="item-quick-shop-btn" ng-click="newItem(item)">QUICK SHOP</button>
+            </div>
+            <div class="item-info">
+                <p class="item-info-text"><a href="/#/">{{item.name}}: {{item.description}}</a></p>
+                <p class="item-info-price">{{item.price| currency}}</p>
+            </div>
+            <div class="itcontrol">
+                <button class="md-raised md-warn" ng-click="newItem(item)">Add to cart</button>
+                <div class="itcontrol-icons">
+                    <a href="/#/"><img src="public/img/plus.png"  alt="plus"></a>
+                    <a href="/#/"><img src="public/img/download.png"  alt="download"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

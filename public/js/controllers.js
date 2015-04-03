@@ -1,67 +1,20 @@
 'use strict';
-
-
-angular.module('App')
-
-        .controller('ItemListCtrl', function ($scope, ItemService, CategoryService, SearchService) {
-            $scope.$watch(CategoryService.getFilter, function (oldValue, newValue) {
-                $scope.items = ItemService.query();
-            });
-
-            $scope.$watch(SearchService.getSearch, function (oldValue, newValue) {
-                $scope.items = ItemService.query();
-            });
-
-            $scope.sorts = [
-                'price',
-                'name',
-                'description'
-            ];
-            $scope.sortCriteria = $scope.sorts[0];
-            $scope.sortReverse = false;
-
-        })
-
-        .controller('HomeCtrl', function ($scope, $anchorScroll, $location, ArianeService, CartService, ToastService) {
-            ArianeService
+angular.module('Ecommerce')
+        .controller('PageCheckoutCtrl', function ($scope, PathService, UtilisateursService, DisplayMessageService) {
+            PathService
                     .clear()
                     .add('Home', '')
-                    .add('His', '')
-                    .add('Lorem ipsum', '');
-
-            $scope.optionsHidden = false;
-
-            $scope.toggleHideOptions = function () {
-                $scope.optionsHidden = !$scope.optionsHidden;
-            };
-
-            $scope.addToCart = function (item) {
-                CartService.add(item);
-                ToastService.simpleToast('"' + item.name + '"' + ' was added to your cart.');
-            };
-
-
-        })
-
-        .controller('CheckoutCtrl', function ($scope, ArianeService, UserService, ToastService) {
-            ArianeService
-                    .clear()
-                    .add('Home', '')
-                    .add('His', '')
                     .add('Checkout', '/checkout');
-
             $scope.email = '';
             $scope.password = '';
-            $scope.login = function () {
-                var res = UserService.isValid($scope.email, $scope.password);
-
+            $scope.userLogin = function () {
+                var res = UtilisateursService.isValid($scope.email, $scope.password);
                 if (res) {
-                    ToastService.simpleToast('Welcome back ' + $scope.email + ' !');
+                    DisplayMessageService.simpleToast('Login from ' + $scope.email + ' sucessfull.');
                 } else {
-                    ToastService.simpleToast('Wrong login/password');
+                    DisplayMessageService.simpleToast('Bad login/password');
                 }
             };
-
             $scope.user = {
                 name: '',
                 phone: '',
@@ -71,87 +24,94 @@ angular.module('App')
                 billingAdress: '',
                 password: ''
             };
-
-            $scope.register = function () {
+            $scope.userRegister = function () {
                 if ($scope.formRegister.$valid) {
-                    ToastService.simpleToast('Welcome ' + $scope.user.email + ' !');
+                    DisplayMessageService.simpleToast('Congratulation : New user created. Welcome ' + $scope.user.email + ' !');
                 } else {
-                    ToastService.simpleToast('The form is not valid, fields are missing');
+                    DisplayMessageService.simpleToast('Please fill all fields, mail must contain "@".');
                 }
             };
-
             $scope.showRegisterForm = false;
-            $scope.toggleRegisterForm = function () {
+            $scope.showInput = function () {
                 $scope.showRegisterForm = !$scope.showRegisterForm;
             };
 
         })
-
-        .controller('CartCtrl', function ($scope, ArianeService, CartService) {
-            ArianeService
+        .controller('ItemListCtrl', function ($scope, ObjetsService, FindCategoryService, RechercherService) {
+            $scope.$watch(FindCategoryService.getFilter, function (oldValue, newValue) {
+                $scope.items = ObjetsService.query();
+            });
+            $scope.$watch(RechercherService.getSearch, function (oldValue, newValue) {
+                $scope.items = ObjetsService.query();
+            });
+            $scope.sorts = [
+                'price',
+                'name',
+                'description'
+            ];
+            $scope.sortCriteria = $scope.sorts[0];
+            $scope.sortReverse = false;
+        })
+        .controller('MainCtrl', function ($scope, $anchorScroll, $location, PathService, CaddieService, DisplayMessageService) {
+            PathService
                     .clear()
                     .add('Home', '')
                     .add('His', '')
+                    .add('VULPUTATE ADIPISCING', '');
+            $scope.optionsHidden = false;
+            $scope.hideSort = function () {
+                $scope.optionsHidden = !$scope.optionsHidden;
+            };
+            $scope.newItem = function (item) {
+                CaddieService.add(item);
+                DisplayMessageService.simpleToast('"' + item.name + '"' + ' added to the item list.');
+            };
+        })
+        .controller('CaddieCtrl', function ($scope, PathService, CaddieService) {
+            PathService
+                    .clear()
+                    .add('Home', '')
                     .add('Cart', '');
-
-            var getTotalPrice = function () {
+            var finalCost = function () {
                 var res = 0;
-
                 $scope.items.map(function (i) {
                     res += i.price * Math.abs(i.quantity);
                 });
-
                 return res;
             };
-
-            $scope.items = CartService.get();
-
+            $scope.items = CaddieService.get();
+            $scope.lastitem = $scope.items[$scope.items.length - 1]; // used for the cart.
             $scope.isEmpty = function () {
                 return $scope.items.length === 0;
             };
-
             $scope.remove = function (itemName) {
-                $scope.items = CartService.remove(itemName).get();
-                $scope.updateTotalPrice();
+                $scope.items = CaddieService.remove(itemName).get();
+                $scope.actualiserPrix();
             };
-
-            $scope.totalPrice = getTotalPrice();
-
-            $scope.updateTotalPrice = function () {
-                $scope.totalPrice = getTotalPrice();
+            $scope.totalPrice = finalCost();
+            $scope.actualiserPrix = function () {
+                $scope.totalPrice = finalCost();
             };
+        })
+        .controller('PathCtrl', function ($scope, PathService) {
+            $scope.add = PathService.add;
+            $scope.remove = PathService.remove;
+            $scope.locations = PathService.get();
 
         })
-
-        .controller('PresentationCtrl', function ($scope) {
-
-        })
-
-        .controller('ArianeCtrl', function ($scope, ArianeService) {
-            $scope.add = ArianeService.add;
-            $scope.remove = ArianeService.remove;
-            $scope.locations = ArianeService.get();
-
-        })
-
-        .controller('CategoryCtrl', function ($scope, CategoryService) {
-            $scope.categories = CategoryService.query();
+        .controller('CategoryCtrl', function ($scope, FindCategoryService) {
+            $scope.categories = FindCategoryService.query();
             $scope.selectCategory = function (categoryName) {
-                CategoryService.setFilter(categoryName, $scope);
+                FindCategoryService.setFilter(categoryName, $scope);
             };
         })
-
-        .controller('SearchCtrl', function ($scope, SearchService) {
-            $scope.search = SearchService.getSearch();
-            $scope.setSearch = SearchService.setSearch;
+        .controller('RechercherCtrl', function ($scope, RechercherService) {
+            $scope.search = RechercherService.getSearch();
+            $scope.setSearch = RechercherService.setSearch;
         })
-
-        .controller('HeaderCtrl', function ($scope, CartService) {
-            $scope.$watch(CartService.get, function (oldValue, newValue) {
-                $scope.cartCount = CartService.get().length;
+        .controller('CountCtrl', function ($scope, CaddieService) {
+            $scope.$watch(CaddieService.get, function (oldValue, newValue) {
+                $scope.cartCount = CaddieService.get().length;
             }, true);
-
-
         })
-
         ;
